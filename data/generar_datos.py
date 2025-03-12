@@ -22,9 +22,10 @@ datos = {
     "Coevaluación": np.random.randint(0, 5, n_equipos),
 }
 
-# 🔹 Definir la variable objetivo (Desempeño: 1 = Éxito, 0 = Fracaso)
-datos["Desempeño"] = np.where(
-    (datos["Promedio Ponderado"] > 3.5) & (datos["Variedad de Roles"] > 5), 1, 0
+# 🔹 Definir la variable objetivo (Desempeño: Entre 0 y 1)
+datos["Desempeño"] = (
+    (datos["Promedio Ponderado"] / 100) * 0.6 + 
+    (datos["Variedad de Roles"] / 10) * 0.4
 )
 
 # 🔹 Convertir a DataFrame
